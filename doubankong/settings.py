@@ -25,10 +25,6 @@ DATABASES = {
 
 CURRENT_DIR = os.path.dirname(__file__)
 ROOT = os.path.dirname(CURRENT_DIR)
-VENDOR_ROOT = os.path.join(ROOT, 'vendor')
-
-if '/vendor' not in ' '.join(sys.path):
-    sys.path.append(VENDOR_ROOT)
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
