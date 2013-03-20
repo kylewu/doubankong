@@ -33,3 +33,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# local settings
+local_settings.py
+
+# tags
+tags
