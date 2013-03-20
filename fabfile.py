@@ -1,7 +1,9 @@
-from cuisine import *
+from fabric.api import local
 
 
-def setup():
-    group_ensure("doubankong")
-    user_ensure("doubankong")
-    group_user_ensure("doubankong", "doubankong")
+########################
+## Local Commands
+########################
+
+def dbk():
+    local('./manage.py runserver')
