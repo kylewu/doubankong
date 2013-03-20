@@ -1,7 +1,4 @@
 from cuisine import *
-import fabric
-
-fabric.api.env.host = ['vps']
 
 
 def setup():
