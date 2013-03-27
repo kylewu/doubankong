@@ -3,15 +3,17 @@ from fabric.colors import *
 
 
 ########################
-## Server Config
+## Basic Config
 ########################
-DBK_HOME = '/srv/code/'
-DBK_REPO_NAME = 'doubankong'
-DBK_GIT = 'git://github.com/kylewu/doubankong.git'
 DBK_USER = 'doubankong'
-DBK_GROUP = 'doubankong'
+DBK_REPO_NAME = 'doubankong/'
+DBK_GIT = 'git://github.com/kylewu/doubankong.git'
 
-DBK_REPO_FOLDER = DBK_HOME + DBK_REPO_NAME
+DBK_HOME = '/srv/code/'
+
+DBK_GROUP = DBK_USER
+DBK_REPO_DIR = DBK_HOME + DBK_REPO_NAME
+DBK_STATIC_DIR = DBK_HOME + 'static/'
 
 ########################
 ## Local Commands
@@ -21,9 +23,20 @@ DBK_REPO_FOLDER = DBK_HOME + DBK_REPO_NAME
 def dbk():
     local('./manage.py runserver')
 
+
+def sh():
+    local('./manage.py shell')
+
 ########################
 ## Deploy Commands
 ########################
+
+
+def create_user():
+    '''
+    create user for our project in server
+    '''
+    pass
 
 
 def clone():
@@ -38,10 +51,10 @@ def clone():
                 sudo("git clone %s" % DBK_GIT, user=DBK_USER)
         else:
             # get the latest code
-            with cd(DBK_REPO_FOLDER):
+            with cd(DBK_REPO_DIR):
                 sudo("git pull", user=DBK_USER)
 
 
 def deploy():
-    with cd(DBK_REPO_FOLDER):
+    with cd(DBK_REPO_DIR):
         sudo('git pull', user=DBK_USER)
